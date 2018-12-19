@@ -13,15 +13,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SpringBootRedisApplicationTests {
 	@Autowired
+	private RedisTemplate<Object, Object> redisTemplate;
+	
+	@Autowired
 	private StringRedisTemplate StringRedisTemplate;
 	
-//	@Test
-//	public void contextLoads() {
-//		User user = new User(2l, "张san");
-//		redisTemplate.opsForValue().set("user", user);
-//		User user1 = (User) redisTemplate.opsForValue().get("user");
-//		System.out.println(user1);
-//	}
+	@Test
+	public void contextLoads() {
+		User user = new User(2l, "张san");
+		redisTemplate.opsForValue().set("user", user);
+		User user1 = (User) redisTemplate.opsForValue().get("user");
+		System.out.println(user1);
+	}
 
 	@Test
 	public void pubMessage(){
