@@ -1,0 +1,14 @@
+server:
+  port: 52117
+  servlet:
+    contextPath: /lsyq
+    session:
+      timeout: 18000
+      
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/study_data?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: devolpment
+    password: devolpment
+  
