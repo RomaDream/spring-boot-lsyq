@@ -17,5 +17,8 @@ public class Listener {
 	public void onMessage(String message) {
 		System.out.println("receiver : " + message);
 	}
-
+	
+	public void otherMessage(String message){
+		System.out.println("receive : " + message);
+	}
 }

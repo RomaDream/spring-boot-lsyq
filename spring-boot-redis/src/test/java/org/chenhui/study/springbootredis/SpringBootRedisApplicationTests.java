@@ -31,5 +31,10 @@ public class SpringBootRedisApplicationTests {
 		//我们向管道（或者说频道）message-test发布一条消息
 		StringRedisTemplate.convertAndSend("message-test", "this is a message from message-test");
 	}
+	
+	@Test
+	public void pubMessages(){
+		StringRedisTemplate.convertAndSend("otherMessage-test", "this is a message from otherMessage-test");
+	}
 }
 

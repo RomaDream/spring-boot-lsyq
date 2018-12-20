@@ -25,13 +25,14 @@ public class ListenerContainer {
 	 */
 	@Bean
 	public RedisMessageListenerContainer redisMessageListenerContainer(RedisConnectionFactory redisConnectionFactory,
-			MessageListenerAdapter adapter){
+			MessageListenerAdapter adapter, MessageListenerAdapter otherAdapter){
 		RedisMessageListenerContainer redisMessageListenerContainer = new RedisMessageListenerContainer();
 		//配置redis连接信息
 		redisMessageListenerContainer.setConnectionFactory(redisConnectionFactory);
 		//订阅一个匹配（支持Ant通配符）message-*的通道
 		//这里可以添加多个消息监听
 		redisMessageListenerContainer.addMessageListener(adapter, new PatternTopic("message-*"));
+		redisMessageListenerContainer.addMessageListener(otherAdapter, new PatternTopic("otherMessage-*"));
 		return redisMessageListenerContainer;
 	}
 	
@@ -46,6 +47,11 @@ public class ListenerContainer {
 	public MessageListenerAdapter adapter(){
 		//这里的onMessage必须与listener方法名保持一致
 		return new MessageListenerAdapter(listener, "onMessage");
+	}
+	
+	@Bean
+	public MessageListenerAdapter otherAdapter(){
+		return new MessageListenerAdapter(listener, "otherMessage");
 	}
 	
 	/**
