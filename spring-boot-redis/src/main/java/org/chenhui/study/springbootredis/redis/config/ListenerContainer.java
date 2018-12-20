@@ -49,7 +49,8 @@ public class ListenerContainer {
 	}
 	
 	/**
-	 * 弦聚焦的RedisTemplate延伸。
+	 * StringRedisTemplate：专注于String操作的RedisTemplate的扩展。
+	 * <br/>
 	 * 由于针对Redis的大多数操作都是基于字符串的，因此该类提供了一个专用类，可以最小化其更通用模板的配置，尤其是在序列化器方面。
 	 * @return
 	 */
